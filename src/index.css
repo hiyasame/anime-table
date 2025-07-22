@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #f8fafc;
+  }
+}
+
+@layer components {
+  .weekly-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 1rem;
+    align-items: start;
+    grid-auto-rows: 1fr; /* 确保同一行的高度一致 */
+  }
+
+  @media (max-width: 640px) {
+    .weekly-grid {
+      grid-template-columns: 1fr; /* 小屏幕上单列显示 */
+    }
+
+    .day-column {
+      min-width: 100%; /* 小屏幕上占满宽度 */
+    }
+  }
+
+  .anime-card {
+    @apply bg-white rounded-lg shadow-sm border border-gray-200 p-4 hover:shadow-md transition-shadow duration-200;
+    width: 100%; /* 占满父容器宽度 */
+  }
+
+  .day-column {
+    @apply bg-white rounded-lg shadow-sm border border-gray-200 p-4;
+    min-width: 350px; /* 设置最小宽度 */
+    min-height: 300px; /* 设置最小高度确保对齐 */
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* 占满网格单元格高度 */
+  }
+
+  .day-column .space-y-3 {
+    flex: 1; /* 让番剧列表区域占据剩余空间 */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+}
